@@ -1,0 +1,21 @@
+### --------------EJERCICIO ACCIONES DE CEMEX (PRECIO DE CIERRE)--------------
+cemex<- ts(read.csv(("C:\\Users\\SALA-C30\\Desktop\\cemex.csv"), header=TRUE), frequency=252, start=2000)
+plot(cemex)
+cemex2<- decompose(cemex)
+cememult<- decompose(cemex, type = "mult")
+names(cemex2)
+plot(cemex2)
+plot(cememult)
+cemex2$type
+
+names(cememult)
+
+tendad<- cemex2$trend
+tendmult<- cememult$trend
+
+estadi<- cemex2$seasonal
+estmult<- cememult$seasonal
+
+ts.plot(cbind(tendad,tendad*estadi),lty=1:2,col=c("blue","red"))
+
+#Mostrar la tendencia  y estacionalidad en una hoja de excel
